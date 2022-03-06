@@ -1,10 +1,9 @@
-package com.example.peliculas
+package com.example.peliculas.ui.Movie
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import com.example.peliculas.R
 import com.example.peliculas.databinding.FragmentMovieBinding
 
 
