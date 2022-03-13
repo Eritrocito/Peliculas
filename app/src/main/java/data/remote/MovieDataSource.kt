@@ -1,20 +1,17 @@
 package data.remote
 
+import application.AppConstants
 import data.model.MovieList
+import repository.WebService
 
 //Contiene a los métodos que van a buscar la info al server
 
-class MovieDataSource {
+class MovieDataSource(private val webService: WebService) {
 
-    fun getUpcomingMovies(): MovieList {
-        return MovieList()
-    }
+    suspend fun getUpcomingMovies(): MovieList = webService.getUpcomingMovies(AppConstants.API_KEY)
+    //return MovieList()
 
-    fun getTopRatedMovies(): MovieList {
-        return MovieList()
-    }
+    suspend fun getTopRatedMovies(): MovieList = webService.getTopRatedMovies(AppConstants.API_KEY)
 
-    fun getPopularMovies(): MovieList {
-        return MovieList()
-    }
+    suspend fun getPopularMovies(): MovieList = webService.getPopularMovies(AppConstants.API_KEY)
 }

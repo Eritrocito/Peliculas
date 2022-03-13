@@ -1,6 +1,10 @@
 package repository
 
+import application.AppConstants
+import com.google.gson.GsonBuilder
 import data.model.MovieList
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -19,3 +23,13 @@ interface WebService {
 
 //ctrl+A --> selecciona todoel codigo
 //ctral+alt+l --> indenta
+
+object RetrofitClient{
+    val webservice by lazy{
+        Retrofit.Builder()
+            .baseUrl(AppConstants.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create())) //Para convertir la info en JSON
+            .build().create(WebService::class.java)
+    }
+
+}
