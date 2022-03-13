@@ -34,6 +34,9 @@ android {
     buildFeatures {
         viewBinding true //Esto genera una clase binding para cada layout
     }
+    task wrapper(type: Wrapper){
+        gradleVersion = '7.2'
+    }
 }
 
 dependencies {
@@ -45,6 +48,13 @@ dependencies {
     implementation 'me.relex:circleindicator:2.1.6'
     implementation 'org.imaginativeworld.whynotimagecarousel:whynotimagecarousel:2.1.0'
 
+    //Concat adapter
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
+
+    //Utils
+    implementation 'com.github.bumptech.glide:glide:4.13.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
+
     //Incorporo las librerías de navegación, para navegar de un destino a otro
     implementation("androidx.navigation:navigation-fragment-ktx:2.4.1")
     implementation("androidx.navigation:navigation-ui-ktx:2.4.1")
@@ -55,6 +65,11 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     //Con esto ya puedo traer info del servidor
+
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
+    // LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
 
 
     testImplementation 'junit:junit:4.13.2'
