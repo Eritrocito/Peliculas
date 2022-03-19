@@ -15,3 +15,5 @@ interface MovieDao {
     @Insert(onConflict= OnConflictStrategy.REPLACE)
     suspend fun saveMovie(movie: MovieEntity)
 }
+
+//Si tuviera más identidades, necesitaría otro Dao
