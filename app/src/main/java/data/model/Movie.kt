@@ -1,4 +1,9 @@
 package data.model
+
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
 //Acá va el código que llama al server para traer la info, mediante retrofit.
 // Este el modelo del objeto Pelicula, cuyos atributos coinciden con lo que devuelve la API
 data class Movie(
@@ -21,3 +26,44 @@ data class Movie(
 )
 
 data class MovieList (val results: List<Movie> = listOf())
+
+//La llamada a la API me devuelve una lista de objetos JSON (que serían los objetos Movie), llamada results; por eso,
+//la variable results en la clase MovieList. Esto se ve en la documentación de la API.
+
+
+
+//Room
+@Entity
+data class MovieEntity(
+    @PrimaryKey
+    val id:Int = -1,
+    @ColumnInfo(name="adult")
+    val adult: Boolean = false,
+    //val genre_ids: List<Int> = listOf(), Room no soporta listas en los campos
+    @ColumnInfo(name="backdrop_path")
+    val backdrop_path: String = "",
+    @ColumnInfo(name="original_title")
+    val original_title: String = "",
+    @ColumnInfo(name="original_language")
+    val original_language: String ="",
+    @ColumnInfo(name="overview")
+    val overview: String ="",
+    @ColumnInfo(name="popularity")
+    val popularity: Double = -1.0,
+    @ColumnInfo(name="poster_path")
+    val poster_path: String="",
+    @ColumnInfo(name="release_date")
+    val release_date: String ="",
+    @ColumnInfo(name="title")
+    val title: String ="",
+    @ColumnInfo(name="video")
+    val video: Boolean = false,
+    @ColumnInfo(name="vote_average")
+    val vote_average: Double = -1.0,
+    @ColumnInfo(name="vote_count")
+    val vote_count: Int = -1
+
+
+)
+
+//Movie se usa para traer la info del servidor, mientras que MovieEntity se usa para almacenar esa info en la BD local

@@ -7,7 +7,7 @@ import data.remote.MovieDataSource
 
 class MovieRepositoryImpl(private val dataSource: MovieDataSource) : MovieRepository {
     override suspend fun getUpcomingMovies(): MovieList = dataSource.getUpcomingMovies()
-
+    //Al implementar un método de una interfaz, sí o sí hay que hacer override
     override suspend fun getTopRatedMovies(): MovieList = dataSource.getTopRatedMovies()
 
     override suspend fun getPopularMovies(): MovieList = dataSource.getPopularMovies()

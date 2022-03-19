@@ -33,6 +33,11 @@ class MovieFragment : Fragment(R.layout.fragment_movie), MovieAdapter.OnMovieCli
             )
         )
     }
+    //viewModels se usa para generar la instancia de MovieViewModel usando su Factory
+    // Un repo puede tener una interfaz y más de una implementación (ej. para buscar info local y remota); por eso, a viewModels<>
+    //tengo que decirle qué implementación voy a usar (en este caso, MovieRepositoryImpl), ya que en el Factory usé la interfaz
+
+
 
     private lateinit var concatAdapter: ConcatAdapter
 
