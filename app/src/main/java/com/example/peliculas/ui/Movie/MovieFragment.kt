@@ -16,7 +16,7 @@ import com.example.peliculas.ui.adapters.concat.TopRatedConcatAdapter
 import com.example.peliculas.ui.adapters.concat.UpcomingConcatAdapter
 import core.Resource
 import data.model.Movie
-import data.remote.MovieDataSource
+import data.remote.RemoteMovieDataSource
 import presentation.MovieViewModel
 import presentation.MovieViewModelFactory
 import repository.MovieRepositoryImpl
@@ -29,7 +29,7 @@ class MovieFragment : Fragment(R.layout.fragment_movie), MovieAdapter.OnMovieCli
     private val viewModel by viewModels<MovieViewModel> {
         MovieViewModelFactory(
             MovieRepositoryImpl(
-                MovieDataSource(RetrofitClient.webservice)  //Inyección de dependencias manual
+                RemoteMovieDataSource(RetrofitClient.webservice)  //Inyección de dependencias manual
             )
         )
     }
