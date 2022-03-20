@@ -6,7 +6,7 @@ import repository.WebService
 
 //Contiene a los métodos que van a buscar la info al server
 
-class MovieDataSource(private val webService: WebService) {
+class RemoteMovieDataSource(private val webService: WebService) {
 
     suspend fun getUpcomingMovies(): MovieList = webService.getUpcomingMovies(AppConstants.API_KEY)
     //return MovieList()

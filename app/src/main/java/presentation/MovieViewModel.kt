@@ -30,7 +30,6 @@ class MovieViewModel(private val repo: MovieRepository) : ViewModel() {
                 //Esto se ejecuta secuencialmente: primero Upcoming, cuando termina viene TopRated, y después Popular
             } catch (e: Exception) {
                 emit(Resource.Failure(e))
-
             }
         }
 
@@ -69,3 +68,4 @@ class MovieViewModelFactory(private val repo: MovieRepository) : ViewModelProvid
         return modelClass.getConstructor(MovieRepository::class.java).newInstance(repo)
     }
 }
+//El ViewModel no permite pasarle nada por constructor, y para eso es que existe el ViewModelFactory

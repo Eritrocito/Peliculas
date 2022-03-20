@@ -28,8 +28,7 @@ object RetrofitClient{
     val webservice by lazy{
         Retrofit.Builder()
             .baseUrl(AppConstants.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create())) //Para convertir la info en JSON
+            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create())) //Para convertir la info de JSON a Movie
             .build().create(WebService::class.java)
     }
-
 }

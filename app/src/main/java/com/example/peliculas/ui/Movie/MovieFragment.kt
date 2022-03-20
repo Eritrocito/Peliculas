@@ -15,8 +15,11 @@ import com.example.peliculas.ui.adapters.concat.PopularConcatAdapter
 import com.example.peliculas.ui.adapters.concat.TopRatedConcatAdapter
 import com.example.peliculas.ui.adapters.concat.UpcomingConcatAdapter
 import core.Resource
+import data.local.AppDatabase
+import data.local.LocalMovieDataSource
+import data.local.MovieDao
 import data.model.Movie
-import data.remote.MovieDataSource
+import data.remote.RemoteMovieDataSource
 import presentation.MovieViewModel
 import presentation.MovieViewModelFactory
 import repository.MovieRepositoryImpl
@@ -29,10 +32,16 @@ class MovieFragment : Fragment(R.layout.fragment_movie), MovieAdapter.OnMovieCli
     private val viewModel by viewModels<MovieViewModel> {
         MovieViewModelFactory(
             MovieRepositoryImpl(
-                MovieDataSource(RetrofitClient.webservice)  //Inyección de dependencias manual
+                RemoteMovieDataSource(RetrofitClient.webservice),  //Inyección de dependencias manual
+                LocalMovieDataSource(AppDatabase.getDatabase(requireContext()).movieDao())
             )
         )
     }
+    //viewModels se usa para generar la instancia de MovieViewModel usando su Factory
+    // Un repo puede tener una interfaz y más de una implementación (ej. para buscar info local y remota); por eso, a viewModels<>
+    //tengo que decirle qué implementación voy a usar (en este caso, MovieRepositoryImpl), ya que en el Factory usé la interfaz
+
+
 
     private lateinit var concatAdapter: ConcatAdapter
 
