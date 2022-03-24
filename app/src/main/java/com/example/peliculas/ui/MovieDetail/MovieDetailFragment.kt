@@ -54,10 +54,17 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
 
 
 
+        binding.FavHeart.setOnClickListener{
+            FavviewModel.saveFavId(FavEntity(args.id))
+            binding.FavHeart.visibility=View.GONE
+            binding.FavHeartBlack.visibility=View.VISIBLE
+
+        }
+        /*
         binding.btnFav.setOnClickListener {
 
             FavviewModel.saveFavId(FavEntity(args.id))
-        }
+        }*/
 
     }
 
