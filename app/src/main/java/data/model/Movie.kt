@@ -114,3 +114,9 @@ fun Movie.toMovieEntity(movieType: String): MovieEntity = MovieEntity(
     this.vote_count,
     movie_type = movieType
 )
+
+@Entity
+data class FavEntity(
+    @PrimaryKey
+    val id: Int = -1
+)

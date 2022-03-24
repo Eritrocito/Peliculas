@@ -5,11 +5,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
 import core.Resource
+import data.model.FavEntity
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import repository.FavRepository
 import repository.MovieRepository
 import java.lang.Exception
 
 //Puedo tener un viewmodel por cada vista, pero si son pocas es  mejor tener uno solo
+
 class MovieViewModel(private val repo: MovieRepository) : ViewModel() {
     fun fetchMainScreenMovies() =
         liveData(Dispatchers.IO) {
@@ -33,7 +38,7 @@ class MovieViewModel(private val repo: MovieRepository) : ViewModel() {
             }
         }
 
-    /*
+        /*
     fun fetchPopularMovies() =
         liveData(Dispatchers.IO) { //Dispatchers.io es un hilo que se asigna a las corutinas de llamada al servidor
             emit(Resource.Loading()) //Antes de ir a buscar la info, emito un valor de carga

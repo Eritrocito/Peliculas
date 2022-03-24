@@ -15,13 +15,13 @@ import com.example.peliculas.ui.adapters.concat.PopularConcatAdapter
 import com.example.peliculas.ui.adapters.concat.TopRatedConcatAdapter
 import com.example.peliculas.ui.adapters.concat.UpcomingConcatAdapter
 import core.Resource
-import data.local.AppDatabase
-import data.local.LocalMovieDataSource
-import data.local.MovieDao
+import data.local.*
+import data.model.FavEntity
 import data.model.Movie
 import data.remote.RemoteMovieDataSource
 import presentation.MovieViewModel
 import presentation.MovieViewModelFactory
+import repository.FavRepository
 import repository.MovieRepositoryImpl
 import repository.RetrofitClient
 
@@ -130,7 +130,9 @@ class MovieFragment : Fragment(R.layout.fragment_movie), MovieAdapter.OnMovieCli
             movie.overview,
             movie.title,
             movie.original_language,
-            movie.release_date
+            movie.release_date,
+            movie.id
+
         )
         findNavController().navigate(action)
     }

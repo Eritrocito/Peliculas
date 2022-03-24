@@ -7,20 +7,19 @@ import androidx.room.RoomDatabase
 import data.model.FavEntity
 import data.model.MovieEntity
 
-@Database(entities = [MovieEntity::class],version=1)
-abstract class AppDatabase: RoomDatabase() {
+@Database(entities = [FavEntity::class],version=1)
+abstract class FavDatabase: RoomDatabase() {
 
-    abstract fun movieDao():MovieDao
-    //abstract fun favDao():FavDao
+    abstract fun favDao():FavDao
 
     companion object{
-        private var INSTANCE: AppDatabase? = null
+        private var INSTANCE: FavDatabase? = null
 
-        fun getDatabase(context: Context): AppDatabase{
+        fun getDatabase(context: Context): FavDatabase{
             INSTANCE=INSTANCE ?: Room.databaseBuilder(
                 context.applicationContext,
-                AppDatabase::class.java,
-                "movie_table"
+                FavDatabase::class.java,
+                "Fav_table"
             ).build()
             return INSTANCE!! //El !! es para manejar la nulabilidad
         }
@@ -28,4 +27,6 @@ abstract class AppDatabase: RoomDatabase() {
             INSTANCE=null
         }
     }
+
+
 }
